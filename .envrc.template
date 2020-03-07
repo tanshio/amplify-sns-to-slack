@@ -1,0 +1,2 @@
+export AMPLIFY_SNS_ID=xxxxxxxx
+export AMPLIFY_SNS_ARN=arn:aws:sns:xxxxx
