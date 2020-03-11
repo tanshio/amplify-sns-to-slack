@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const PREFIX = `Your build status is`
+const PREFIX = `Your build status is `
 const STATUSES = ['STARTED', 'SUCCEED', 'FAILED'] as const
 type StatusType = typeof STATUSES[number]
 
@@ -30,7 +30,7 @@ export async function handler(event: any) {
   const message = event.Records[0]['Sns']['Message']
   const status =
     STATUSES.find((s) => {
-      return `${PREFIX}${message}`.includes(s)
+      return `${message}`.includes(`${PREFIX}${s}`)
     }) || 'FAILED'
 
   await axios.post(process.env.SLACK_WEBHOOK_URL || '', {
